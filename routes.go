@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"net/http"
 
+	"log"
+
 	"github.com/sspinc/lametric-newrelic/newrelic"
 )
 
@@ -15,11 +17,12 @@ type Frame struct {
 	Icon string `json:"icon"`
 }
 
-func HandleRequests() {
+func HandleRequests() error {
 	http.HandleFunc("/", helloHandler)
 	http.HandleFunc("/apistatus", apiStatus)
 
-	http.ListenAndServe(":5000", nil)
+	log.Print("Starting on port 5000")
+	return http.ListenAndServe(":5000", nil)
 }
 
 func helloHandler(w http.ResponseWriter, r *http.Request) {
@@ -31,6 +34,7 @@ func apiStatus(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		fmt.Fprintf(w, "Error: %s", err)
+		log.Printf("failed to retrieve app status: %s", err)
 		return
 	}
 

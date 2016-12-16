@@ -7,6 +7,8 @@ import (
 
 	"fmt"
 
+	"log"
+
 	"github.com/sspinc/lametric-newrelic/newrelic"
 )
 
@@ -28,5 +30,7 @@ func main() {
 
 	client = newrelic.NewClient(apiKey, &http.Client{})
 
-	HandleRequests()
+	if err := HandleRequests(); err != nil {
+		log.Print(err)
+	}
 }
