@@ -10,7 +10,7 @@ const applicationsApiUrl = "https://api.newrelic.com/v2/applications"
 
 type AppStats struct {
 	Name       string
-	Throughput int
+	Throughput float64
 	Apdex      float64 `json:"apdex_score"`
 	ErrorRate  float64 `json:"error_rate"`
 }
