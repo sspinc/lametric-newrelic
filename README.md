@@ -1,5 +1,7 @@
 # New Relic for LaMetric
 
+![screenshot](lametric-newrelic.png)
+
 New Relic for LaMetric shows information about your applications on your LaMetric smart clock.
 
 ## Features
