@@ -26,6 +26,10 @@ Visit the [LaMetric Developer site](https://developer.lametric.com/) and create 
  4. Response time metric screen
  5. Error rate metric screen
 
+### Configure URL endpoint
+
+Configure the URL where the application is running for LaMetric to poll.
+
 ## Configuration
 
 | Name              | Description                                  | Default value |
@@ -34,6 +38,35 @@ Visit the [LaMetric Developer site](https://developer.lametric.com/) and create 
 | NEWRELIC_API_KEY  | API key to query the New Relic REST API      |               |
 | NEWRELIC_APP_NAME | New Relic application to query               |               |
 
-## Usage
-
 ## Development
+
+New Relic for LaMetric provides an HTTP endpoint that is polled by LaMetric. The response includes one or more frames that is shown on the clock.
+
+### Example JSON response
+
+```json
+{
+    "frames": [
+        {
+            "text": "Fit Predictor API",
+            "icon": "i95"
+        },
+        {
+            "text": "4.7k rpm",
+            "icon": "i95"
+        },
+        {
+            "text": "0.99",
+            "icon": null
+        },
+        {
+            "text": "24.6ms",
+            "icon": null
+        },
+        {
+            "text": "0.12%",
+            "icon": null
+        }
+    ]
+}
+```
